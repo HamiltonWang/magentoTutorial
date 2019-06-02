@@ -178,7 +178,9 @@ Controller 的 url 一般是這樣的形式
 
 
 ### 6. 加入 Layout 檔案
-這是告訴
+這是告訴 Magento 如何將 block 和 template 連結使用。
+URL 格式 {module_root}/view/{area}/layout/
+
 
     app/code/Aiart/Hotel/view/frontend/layout/hotel_index_index.xml
 
@@ -193,27 +195,29 @@ Controller 的 url 一般是這樣的形式
     </page>
 
 
-##Layout file
-### 7. Create template file
+##Layout 檔案
 
-File: app/code/Aiart/Hotel/view/frontend/templates/index.phtml
+### 7. 新增一個 template 檔案
+這是告訴 Magento 如何排版
 
-HTML5 lines
+檔案位置: app/code/Aiart/Hotel/view/frontend/templates/index.phtml
+
+因為上面有在 `layout` 檔案將 `template` 和 `block` 關聯在一起，所以在 phtml  中可以直接使用 `block` 的 function  
 
     <p>
     <h1><?php echo $this->getHelloWorldTxt(); ?></h1>
     <h2>Welcome to my site</h2>
     </p>
 
-## 8. Flush Magento cache
+## 8. 清除暫存
 
     php bin/magento cache:clean
 
     php bin/magento cache:flush
 
-## 9. check your result
+## 9. 檢查你的結果
 
-http://www.example.com/hotel/index/search
+        http://www.example.com/hotel/index/search
 
 if at step 4-2 yo use your class name as Index then your url would be http://example.com/hotel/index/index
 in short it can be found at
