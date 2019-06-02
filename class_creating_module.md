@@ -12,7 +12,7 @@ Collections Data
 </code></pre>
 
 ## 3. Creating the module files and folders
-###3-1. create folders
+### 3-1. create folders
 app/code/Aiart
 app/code/Aiart/Hotel
 first is the namespace and the second one is the module folder
