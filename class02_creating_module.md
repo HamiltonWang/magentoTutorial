@@ -73,19 +73,21 @@ install your module by issuing command
 
 ## 如何寫個 controller
 
-Controller 長這樣
+Controller 的 url 一般是這樣的形式
 
     http://example.com/route_name/controller/action
 
 請注意 `route_name` 是放在`routes.xml`特別的唯一名稱。
-`controller` is the folder inside Controller folder.
-action is a class with execute method to process request.
+`controller` 必須和 controller 裡面的檔案夾名稱相同，待會會有範例來解釋。
+`action` 是個`類別 class` 裡的 `execute` method 
 
-### 4-1. define router by adding routes.xml
-file: app/code/Aiart/Hotel/etc/frontend/routes.xml
+接下來為範例
 
-XML9 lines
 
+### 4-1. 定義你 routes.xml
+檔案: app/code/Aiart/Hotel/etc/frontend/routes.xml
+
+內容範例：
 
     <?xml version="1.0" ?>
     <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
@@ -96,27 +98,31 @@ XML9 lines
         </router>
     </config>
 
+請注意 `frontName` 就是 url 中的第一部份
 
-the tag ‘s frontName attribute is the first part of the url
-the router is connected to a module here, so it is how controller and module is linked.
+`router` 的標籤 就是在模組中中 `controller` 是如何跟模組相關聯的。
 
-In Magento 2 URL’s are constructed this way:
+舉例來說：
+
+在 Magento 2 的 URL’s 是這麼表示的:
 
     <frontName>/<controler_folder_name>/<controller_class_name>
 
-but the default is index, namely
+預設是`index`, 也就是如下
     
     hotel/index/index
 
-but the following example i will use
+
+但為了要清楚一點，我們使用以下 URL 來當解說範例
 
     hotel/index/search 
- to illustrate the concept clearer.
+    
+
 
 ### 4-2. create controller file e.g. Index.php
-location: app/code/Aiart/Hotel/Controller/Index/Search.php
+檔案位置：app/code/Aiart/Hotel/Controller/Index/Search.php
 
-PHP20 lines
+內容範例：
 
     <?php namespace Aiart\Hotel\Controller\Index; 
     use Magento\Framework\App\Action\Context; 
