@@ -13,7 +13,7 @@ Collections Data
     php bin/magento deploy:mode:set developer
 
 
-## 3. Creating the module files and folders
+## 3. 新增模組的必要檔案和檔案夾
 ### 3-1. 新增檔案夾
 
     app/code/Aiart
@@ -41,10 +41,12 @@ Collections Data
         <module name="Aiart_Hotel" setup_version="1.0.0" />
     </config>
 
-### 3-3. add registration.php
+### 3-3. 加入 registration.php 檔案
 檔案位置: app/code/Aiart/Hotel/registration.php
 
-內容範例
+這是為了註冊的用途，讓你的 Magento 知道你有這個模組
+
+內容範例：
 
     <?php \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
@@ -53,25 +55,33 @@ Collections Data
     );
 
 
-### 3-4. install your module
+### 3-4. 安裝你的模組 module
 install your module by issuing command
 
     php bin/magento module:status
     php bin/magento module:enable Aiart_Hotel
     php bin/magento setup:upgrade
 
-if you want to make sure your module is installed, you can go to Admin → Stores → Configuration → Advanced → Advanced and see if it is listed there.
+如果你要確認模組已經被安裝，請到
 
-in magento, all the business logic is supposed to be written in the module. So please layout your business logic in different modules in your name-space.
+    Admin → Stores → Configuration → Advanced → Advanced
+   
+來看看是否有在這顯示出來。
 
-next if you want to expose your program to a mobile device it is natural to create an rests API service.
+在 Magento 所有商業邏輯應該寫在 module 裡面。所以不同的 module 應該有不同的功能，然後交叉呼叫。
 
-Creating a controller
-http://example.com/route_name/controller/action
-route_name is a unique name which is set in routes.xml.
-controller is the folder inside Controller folder.
+
+## 如何寫個 controller
+
+Controller 長這樣
+
+    http://example.com/route_name/controller/action
+
+請注意 `route_name` 是放在`routes.xml`特別的唯一名稱。
+`controller` is the folder inside Controller folder.
 action is a class with execute method to process request.
-4-1. define router by adding routes.xml
+
+### 4-1. define router by adding routes.xml
 file: app/code/Aiart/Hotel/etc/frontend/routes.xml
 
 XML9 lines
