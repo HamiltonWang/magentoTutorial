@@ -12,10 +12,17 @@ Collections Data
 </code></pre>
 
 ## 3. Creating the module files and folders
-### 3-1. create folders
-app/code/Aiart
-app/code/Aiart/Hotel
-first is the namespace and the second one is the module folder
+### 3-1. 新增檔案夾
+
+    app/code/Aiart
+    app/code/Aiart/Hotel
+
+
+
+第一個espace and the second one is the module folder
+first is the nam
+
+espace and the second one is the module folder
 you can have multiple modles for the same namespace. Normally namespace is your company name.
 
 ### 3-2. module.xml
