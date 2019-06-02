@@ -119,7 +119,7 @@ Controller 的 url 一般是這樣的形式
     
 
 
-### 4-2. create controller file e.g. Index.php
+### 4-2. 新增一個 controller 檔案 e.g. Search.php
 檔案位置：app/code/Aiart/Hotel/Controller/Index/Search.php
 
 內容範例：
@@ -159,10 +159,11 @@ Controller 的 url 一般是這樣的形式
     
     
 
-### 5. Creating a block
-Create a Index.php file in the app/code/Aiart/Hotel/Block folder with the following code:
+### 5. 新增一個 Block
+什麼是 `Blcok`?
+他是網頁的處理邏輯，你可以用來計算資料或是把一些資料從資料庫拉出來後顯示。
 
-PHP11 lines
+請在 `app/code/Aiart/Hotel/Block` 檔案夾中加入 `Index.php` 然後使用以下範例。
 
 
     <?php
@@ -176,11 +177,12 @@ PHP11 lines
     }
 
 
-### 6. Create layout file
+### 6. 加入 Layout 檔案
+這是告訴
 
     app/code/Aiart/Hotel/view/frontend/layout/hotel_index_index.xml
 
-XML7 lines
+範例
 
 
     <?xml version="1.0"?>
