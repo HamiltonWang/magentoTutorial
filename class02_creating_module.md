@@ -142,13 +142,22 @@ Controller 的 url 一般是這樣的形式
         }
     }
 
-every action has its own class which implements the execute() method.
+每個 `action` 在自己的類別中都會有一個 `execute()` 的方法。
+注意一下我之前說的
+檔案夾位置的 `Controller/Index/Search.php` 的 `Index` 檔案夾的 `Search.php` 就是 Search 類別，然後 `execute`就是預設的執行方法。
+
+
+接下來把暫存清除
 
     php bin/magento cache:clean
 
-After finish all steps, the output Hello World should be displayed in your browser when you open the URL.
+
+接下來你應該在以下網址可以看到你執行的結果
 
     http://example.com/hotel/index/search
+    
+    
+    
 
 ### 5. Creating a block
 Create a Index.php file in the app/code/Aiart/Hotel/Block folder with the following code:
