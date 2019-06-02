@@ -182,7 +182,7 @@ Controller 的 url 一般是這樣的形式
 URL 格式 {module_root}/view/{area}/layout/
 
 
-    app/code/Aiart/Hotel/view/frontend/layout/hotel_index_index.xml
+    app/code/Aiart/Hotel/view/frontend/layout/hotel_index_search.xml
 
 範例
 
@@ -190,7 +190,7 @@ URL 格式 {module_root}/view/{area}/layout/
     <?xml version="1.0"?>
     <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
         <referenceContainer name="content">
-            <block class="Aiart\Hotel\Block\Index" name="aiart_index_index" template="Aiart_Hotel::index.phtml" />
+            <block class="Aiart\Hotel\Block\Index" name="aiart_index_search" template="Aiart_Hotel::search.phtml" />
         </referenceContainer>
     </page>
 
@@ -200,7 +200,7 @@ URL 格式 {module_root}/view/{area}/layout/
 ### 7. 新增一個 template 檔案
 這是告訴 Magento 如何排版
 
-檔案位置: app/code/Aiart/Hotel/view/frontend/templates/index.phtml
+檔案位置: app/code/Aiart/Hotel/view/frontend/templates/sayhello.phtml
 
 因為上面有在 `layout` 檔案將 `template` 和 `block` 關聯在一起，所以在 phtml  中可以直接使用 `block` 的 function  
 
