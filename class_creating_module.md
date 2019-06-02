@@ -6,10 +6,12 @@ Layouts
 Collections Data
 你可以把所有的選項都點掉，但是這樣網頁會變得太慢。
 
+
 ## 2. 把 Magento 設定成開發模式（developer mode）
 請執行以下指令
-<pre><code>php bin/magento deploy:mode:set developer
-</code></pre>
+
+    php bin/magento deploy:mode:set developer
+
 
 ## 3. Creating the module files and folders
 ### 3-1. 新增檔案夾
@@ -19,33 +21,37 @@ Collections Data
 
 
 
-第一個espace and the second one is the module folder
-first is the nam
+第一個是 namespace 然後第2個是 module 的檔案夾
+一個 namespace 裡面可以有多個 module, 一般來說，namespae 是你的公司名稱。
 
-espace and the second one is the module folder
-you can have multiple modles for the same namespace. Normally namespace is your company name.
 
-### 3-2. module.xml
-app/code/Aiart/Hotel/etc
-etc/module.xml
 
-XML5 lines
+### 3-2. 建立 module.xml 檔案
+檔案位置：
+
+    app/code/Aiart/Hotel/etc
+
+    etc/module.xml
+
+範例內容：
+
 
     <?xml version="1.0"?>
     <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
         <module name="Aiart_Hotel" setup_version="1.0.0" />
     </config>
 
-3-3. add registration.php
-file: app/code/Aiart/Hotel/registration.php
+### 3-3. add registration.php
+檔案位置: app/code/Aiart/Hotel/registration.php
 
-XML8 lines
+內容範例
 
     <?php \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
     'Aiart_Hotel',
     __DIR__
     );
+
 
 ### 3-4. install your module
 install your module by issuing command
