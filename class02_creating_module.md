@@ -69,6 +69,10 @@ install your module by issuing command
 來看看是否有在這顯示出來。
 
 在 Magento 所有商業邏輯應該寫在 module 裡面。所以不同的 module 應該有不同的功能，然後交叉呼叫。
+到了這一步，其實模組已經建構完成。你有幾個選擇，你是否要把這個模組用在前端網頁，如果答案是 Yes，那就是再繼續製作 Controller。或是你可以選擇把模組用 REST API 的方式延伸出去也是可以的。
+
+接下來我們解說一下如何製作 Controller 讓 Magento 網頁來使用。
+
 
 
 ## 如何寫個 controller
@@ -117,7 +121,6 @@ Controller 的 url 一般是這樣的形式
 
     hotel/index/search 
     
-
 
 ### 4-2. 新增一個 controller 檔案 e.g. Search.php
 檔案位置：app/code/Aiart/Hotel/Controller/Index/Search.php
@@ -176,15 +179,16 @@ Controller 的 url 一般是這樣的形式
         }
     }
 
+Note: Block可以隨意取名，因為在下面的 `layout` xml file 會去做關聯。
 
-### 6. 加入 Layout 檔案
+### 6. 加入 Layout xml 檔案
 這是告訴 Magento 如何將 block 和 template 連結使用。
 URL 格式 {module_root}/view/{area}/layout/
 
 
     app/code/Aiart/Hotel/view/frontend/layout/hotel_index_search.xml
 
-範例
+範例:
 
 
     <?xml version="1.0"?>
@@ -194,11 +198,11 @@ URL 格式 {module_root}/view/{area}/layout/
         </referenceContainer>
     </page>
 
+* 請注意，檔案位置都必須 match
 
-##Layout 檔案
 
 ### 7. 新增一個 template 檔案
-這是告訴 Magento 如何排版
+這是告訴 Magento 如何排版，也就是最後的 html + php 檔案
 
 檔案位置: app/code/Aiart/Hotel/view/frontend/templates/sayhello.phtml
 
@@ -219,15 +223,21 @@ URL 格式 {module_root}/view/{area}/layout/
 
         http://www.example.com/hotel/index/search
 
-if at step 4-2 yo use your class name as Index then your url would be http://example.com/hotel/index/index
-in short it can be found at
-http://example.com/hotel/
+如果在步驟 4-2 你的類別名稱是 Index ，那 url 就會是如下
+
+    http://example.com/hotel/index/index
+
+如果都是 index ,也可以簡寫成
+
+    http://example.com/hotel/
 
 
 
-so it is done!
+完成了 ！
 
-another quick way is to use a module generator
-http://www.silksoftware.com/magento-module-creator/magento2x.php
+你也可以使用產生器來完成以上步驟，但是記得要懂得原理產生器才能幫助你。
 
-you can use it when you understand the concept and try it by yourself manually and then you can use the generator. Enjoy!
+    http://www.silksoftware.com/magento-module-creator/magento2x.php
+
+
+加油～！
