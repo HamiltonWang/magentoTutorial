@@ -221,7 +221,7 @@ URL 格式 {module_root}/view/{area}/layout/
 
 ## 9. 檢查你的結果
 
-        http://www.example.com/hotel/index/search
+    http://www.example.com/hotel/index/search
 
 如果在步驟 4-2 你的類別名稱是 Index ，那 url 就會是如下
 
