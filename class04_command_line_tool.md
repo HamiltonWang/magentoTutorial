@@ -1,4 +1,4 @@
-Class 04: 使用/建構 Command line
+# Class 04: 使用/建構 Command line
 
 你應該會覺得有點奇怪，為何這個章節會教導使用 command line (後續簡稱 cmd)?
 
@@ -12,7 +12,7 @@ Class 04: 使用/建構 Command line
 
 
 
-### Step 1: 設定 registration.php 和 module.php
+## Step 1: 設定 registration.php 和 module.php
 
 #### registration.php
 檔案位置: app/code/Aiart/Hotel/registration.php
@@ -38,7 +38,7 @@ Class 04: 使用/建構 Command line
     </config>
 
 
-### Step 2: Define command in di.xml
+## Step 2: Define command in di.xml
 In the di.xml file, you have to use a type Magento\Framework\Console\CommandList to tell the program that you want to use command line.
 
 File: app/code/Aiart/Hotel/etc/di.xml
