@@ -1,4 +1,4 @@
-# magentoTutorial
+# Magento2 Tutorial
 Tutorial for Magento 學習課程
 
 ## 撰寫教學目的
