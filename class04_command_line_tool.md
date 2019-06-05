@@ -12,6 +12,8 @@
 
 
 
+
+
 ## Step 1: 設定 registration.php 和 module.php
 
 #### registration.php
@@ -38,70 +40,143 @@
     </config>
 
 
-## Step 2: Define command in di.xml
-In the di.xml file, you have to use a type Magento\Framework\Console\CommandList to tell the program that you want to use command line.
 
-File: app/code/Aiart/Hotel/etc/di.xml
+## Step 2: 在 di.xml 定義 command
+
+在 di.xml 檔案中你必須使用 `type` `Magento\Framework\Console\CommandList` 來讓程式知道你要用 cmd.
+
+檔案位置: app/code/Aiart/Hotel/etc/di.xml
 
 JavaScript10 lines
 
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-   <type name="Magento\Framework\Console\CommandList">
-       <arguments>
-           <argument name="commands" xsi:type="array">
-               <item name="createCategory" xsi:type="object">Aiart\Hotel\Console\CreateCategory</item>
-           </argument>
-       </arguments>
-   </type>
-</config>
-This is to assign  InsertCategory command class. This class requires a execute  function and we will write code in it.
+    <?xml version="1.0"?>
+    <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="createCategory" xsi:type="object">Aiart\Hotel\Console\CreateCategory</item>
+            </argument>
+        </arguments>
+    </type>
+    </config>
+
+* 請注意 `<item>` 是用來宣告 cmd 的名稱和他對應的執行檔案 e.g. `Aiart\Hotel\Console\CreateCategory`。
 
  
 
-Step 3: Create the implementation class
-The actual implementation is carried out in the following file as we define previously in di.xml.
+## Step 3: 製作你的實際要執行的程式 Create the implementation class
 
-File: app/code/Aiart/Hotel/Console/CreateCategory.php
+在步驟 2 的 di.xml 中 `item` 裡的 `CreateCategry` 實際執行程式的檔案位置是 `app/code/Aiart/Hotel/Console/CreateCategory.php`。
 
-PHP22 lines
-
-<?php
-namespace Aiart\Hotel\Console;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-class CreateCategory extends Command
-{
-   protected function configure()
-   {
-       $this->setName('Category:create');
-       $this->setDescription('Create Category');
-       
-       parent::configure();
-   }
-   
-   protected function execute(InputInterface $input, OutputInterface $output)
-   {
-       $output->writeln("Testing..1,2,3, ready to launch...");
-   }
-}
-The main 2 functions are execute() and configure(). First is to write your implementation code and the later is to setup the command line instruction such as name, description and arguments.
-
-Let’s see if you have done correctly.
-
-Please flush your cache
-
-PowerShell1 lines
-
-php ./bin/magento setup:upgrade
-Let’s see by typing the following command
-
-Batch File1 lines
-
-php ./bin/magento --list
-check that the module is active bin/magento module:status if not, it means you haven’t enable your module. Run php ./bin/magento module:enable Aiart_Hotel.
+他是放在 `Console` 檔案夾中。
 
 
+    <?php
+        namespace Aiart\Hotel\Console;
+        use Symfony\Component\Console\Command\Command;
+        use Symfony\Component\Console\Input\InputInterface;
+        use Symfony\Component\Console\Output\OutputInterface;
+        class CreateCategory extends Command
+        {
+            protected function configure()
+            {
+                $this->setName('aiart:category:create');
+                $this->setDescription('Create Category');
+                
+                parent::configure();
+            }
+            
+            protected function execute(InputInterface $input, OutputInterface $output)
+            {
+                $output->writeln("Testing..1,2,3, ready to launch...");
+            }
+        }
 
-Step 3: Add in arguments
+主要的程式函式是 `execute()` 和 `configure()`。
+`execute()` 是執行程式， `configure()` 是宣告他的名稱、敘述、參數等。
+
+> `$this->setName('aiart:category:create');` 是到時執行的指令。
+
+### 實際測試
+#### 3-1 清掉你的 Cache
+
+M2 版本 2.1
+    sudo rm -rf ./var/cache/* ./var/page_cache/* ./var/di/* ./var/generation/* pub/static/* var/view_preprocessed/*
+    sudo php ./bin/magento cache:clean
+    sudo php ./bin/magento cache:flush
+
+M2 版本 2.2 後
+    sudo rm -rf ./var/cache/* ./var/page_cache/* ./var/di/* ./generated/code/*  ./generated/metadata/* ./var/session/*
+    sudo rm -rf pub/static/* var/view_preprocessed/*
+    sudo php ./bin/magento cache:clean && sudo php ./bin/magento cache:flush
+
+#### 3-2 安裝
+
+    php ./bin/magento setup:upgrade
+
+把模組列出
+
+    php ./bin/magento --list
+
+#### 3-3 看是否有安裝成功
+
+檢查一次是否模組是啟動的
+
+> 如果你還沒建構模組，請參考前一章節，因為你建構的任何東西都必須依附在某個自建模組下
+
+    bin/magento module:status
+    
+如果沒有啟動，請啟動他
+
+    php ./bin/magento module:enable Aiart_Hotel.
+
+#### 3-4 執行
+
+    php bin/magento aiart:category:create
+
+## Step 4: 加入參數
+
+我們需要多點功能
+檔案位置：`app/code/Aiart/Hotel/Console/CreateCategory.php`
+
+
+    <?php
+        namespace Aiart\Hotel\Console;
+        use Symfony\Component\Console\Command\Command;
+        use Symfony\Component\Console\Input\InputInterface;
+        use Symfony\Component\Console\Output\OutputInterface;
+        class CreateCategory extends Command
+        {
+            protected function configure()
+            {
+                $this->setName('aiart:multiply');
+                $this->setDescription('Multiply your number');
+                // Next line will add a new required parameter to our script
+                $this->addArgument('number', InputArgument::REQUIRED, __('Type a number'));
+ 
+                parent::configure();
+            }
+            
+            protected function execute(InputInterface $input, OutputInterface $output)
+            {
+                $output->writeln("請輸入一個數字:");
+                $output->writeln($input->getArgument('number') * 2);
+            }
+        }
+
+這只是把你輸入的數字乘 2 而已。
+
+#### 4-1 執行看看
+
+    php bin/magento aiart:multiply
+
+他會出現 “Not enough arguments” 的錯誤訊息
+
+但你如果有加入參數
+
+    php bin/magento aiart:multiply 2
+
+他就會成功執行
+
+    請輸入一個數字:
+    4
