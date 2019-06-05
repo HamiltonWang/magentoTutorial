@@ -1,4 +1,4 @@
-# Class 04: 使用/建構 Command line
+# Magento 教學 04: 使用/建構 Command line
 
 你應該會覺得有點奇怪，為何這個章節會教導使用 command line (後續簡稱 cmd)?
 

@@ -1,3 +1,5 @@
+# Magento 教學 02：建構模組
+
 ## 1. 把 Magento cache 解除
 到 Admin → System → Cache Management → 選擇 cache types 然後把它為解除
 

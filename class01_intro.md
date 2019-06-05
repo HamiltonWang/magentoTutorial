@@ -1,3 +1,5 @@
+# Magento 教學 01：課程目的
+
 ## 撰寫教學目的
 
 Magento 2 是個很強大的 framework，比起wordpress等，它的高度實在比wordpress 高很多。但是在廣度，Wordpress 的確是比較多人在用。如果是個在地化的服務，的確 WordPress 綽綽有餘。
