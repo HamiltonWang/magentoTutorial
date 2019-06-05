@@ -115,11 +115,13 @@ M2 版本 2.2 後
     php ./bin/magento setup:upgrade
     php ./bin/magento setup:di:compile
 
-    
+
 
 把模組列出
 
     php ./bin/magento --list
+
+
 
 #### 3-3 看是否有安裝成功
 
