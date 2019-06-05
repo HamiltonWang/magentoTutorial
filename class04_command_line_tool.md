@@ -185,3 +185,13 @@ M2 版本 2.2 後
 
     請輸入一個數字:
     4
+
+
+## 進階參考範例
+
+這是個很棒的實際範例
+https://www.thirdandgrove.com/create-magento-module-command-import-products
+
+為了怕以後網頁不見來保留資料，我把程式碼保留在 class04_real_example.md
+
+
