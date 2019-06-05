@@ -241,3 +241,20 @@ URL 格式 {module_root}/view/{area}/layout/
 
 
 加油～！
+
+
+
+## 模組相依性
+
+如果你有多個模組，為了安裝是不要安裝順序錯誤而發生錯誤，請加入模組相依性
+
+檔案位置： etc/module.xml
+
+    <?xml version="1.0"?>
+    <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+        <module name="MyCompany_SomeExtension" setup_version="1.0.0">
+            <sequence>
+                <module name="MyCompany_MyModule" />
+            </sequence>
+        </module>
+    </config>
