@@ -160,7 +160,7 @@ Controller 的 url 一般是這樣的形式
     http://example.com/hotel/index/search
     
     
-    
+> Controller 可以控制多個 model 或 Module, 會在 controller class 的 constructor 加入 所使用的 model
 
 ### 5. 新增一個 Block
 什麼是 `Blcok`?
