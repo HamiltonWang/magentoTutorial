@@ -113,6 +113,9 @@ M2 版本 2.2 後
 #### 3-2 安裝
 
     php ./bin/magento setup:upgrade
+    php ./bin/magento setup:di:compile
+
+    
 
 把模組列出
 
